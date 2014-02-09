@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140209040255) do
+ActiveRecord::Schema.define(version: 20140209072948) do
+
+  create_table "keys", force: true do |t|
+    t.string   "name"
+    t.integer  "key"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "messages", force: true do |t|
     t.datetime "created_at"
@@ -30,5 +37,12 @@ ActiveRecord::Schema.define(version: 20140209040255) do
   add_index "messages", ["PhoneNumber"], name: "index_messages_on_PhoneNumber"
   add_index "messages", ["State"], name: "index_messages_on_State"
   add_index "messages", ["Zip"], name: "index_messages_on_Zip"
+
+  create_table "unique_keys", force: true do |t|
+    t.string   "KeyName"
+    t.integer  "currentKey"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

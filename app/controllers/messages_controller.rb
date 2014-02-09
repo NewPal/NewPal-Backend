@@ -1,7 +1,14 @@
 class MessagesController < ApplicationController
   def index
   	@messages = Message.all
+  	render json: @messages
   end
+
+  def bodies
+  	@messages = Message.all
+  end
+
+
 
   private
 

@@ -1,7 +1,7 @@
 class ReceiveTextController < ApplicationController
 
   skip_before_filter  :verify_authenticity_token
-  
+
   def index 
     # let's pretend that we've mapped this action to 
     # http://localhost:3000/sms in the routes.rb file
@@ -14,18 +14,27 @@ class ReceiveTextController < ApplicationController
     logger.info("My Log: " + message_body)
    
      
+     currKey= Key.first
+
      @message = Message.new
+     @message.ClientId = currKey.key
+     currKey.key = currKey.key + 1
+     currKey.save
+
+
      @message.Body = message_body
      @message.PhoneNumber = from_number
      @message.City = city
     
 
      if @message.save
-        send_reply(from_number, "Thank You! Your message was accepted.")
+        send_reply(from_number, "Thank You! Your message was accepted. your Id is " + @message.ClientId.to_s)
      end
 
      render :nothing => true
   end
+
+
 
   def send_reply (number, message)
       #number_to_send_to = params[:number_to_send_to]
