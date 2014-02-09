@@ -6,6 +6,6 @@ class MessagesController < ApplicationController
   private
 
    def message_params
-      params.permit(:body, :State, :Country, :City, :Number, :Zip, :ClientId)
+      params.permit(:body, :State, :Country, :City, :PhoneNumber, :Zip, :ClientId)
     end
 end
