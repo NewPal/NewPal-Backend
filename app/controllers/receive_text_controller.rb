@@ -6,10 +6,11 @@ class ReceiveTextController < ApplicationController
     message_body = params["Body"]
     from_number = params["From"]
  
-    @body = message_body
-    @number = message_number
-    #  @body = "body"
-    #  @number = "number"
+    #@body = message_body
+    
+    #@number = message_number
+      @body = "body"
+      @number = "number"
 
   end
 end
