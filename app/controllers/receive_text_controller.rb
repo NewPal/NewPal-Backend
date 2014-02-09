@@ -5,15 +5,15 @@ class ReceiveTextController < ApplicationController
   def index 
     # let's pretend that we've mapped this action to 
     # http://localhost:3000/sms in the routes.rb file
-    logger.debug("logger Test")
+    
     
     message_body = params["Body"]
     from_number = params["From"]
     city        = params["FromCity"]
-
-    logger.info("My Log: " + message_body)
+    state       = params["FromState"]
+    country     = params["FromCountry"]
+    zip         = params["FromZip"]
    
-     
      currKey= Key.first
 
      @message = Message.new
@@ -25,10 +25,15 @@ class ReceiveTextController < ApplicationController
      @message.Body = message_body
      @message.PhoneNumber = from_number
      @message.City = city
+     @message.State = state
+     @message.Country = country
+     @message.Zip = zip
     
 
      if @message.save
         send_reply(from_number, "Thank You! Your message was accepted. your Id is " + @message.ClientId.to_s)
+     else
+        send_reply(from_number, "Problem accured, please try again later.")
      end
 
      render :nothing => true
