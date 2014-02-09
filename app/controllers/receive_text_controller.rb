@@ -13,14 +13,21 @@ class ReceiveTextController < ApplicationController
     state       = params["FromState"]
     country     = params["FromCountry"]
     zip         = params["FromZip"]
-   
-     currKey= Key.first
 
-     @message = Message.new
+    @message = Message.new
+
+    lastMessage = Message.where(PhoneNumber: from_number).to_a.first
+    if lastMessage 
+        @message.ClientId = lastMessage.ClientId
+    else
+     currKey= Key.first 
      @message.ClientId = currKey.key
      currKey.key = currKey.key + 1
      currKey.save
 
+    end
+   
+     
 
      @message.Body = message_body
      @message.PhoneNumber = from_number
@@ -31,7 +38,11 @@ class ReceiveTextController < ApplicationController
     
 
      if @message.save
-        send_reply(from_number, "Thank You! Your message was accepted. your Id is " + @message.ClientId.to_s)
+        if lastMessage
+          send_reply(from_number, "Thank You! Your message was accepted")
+        else  
+          send_reply(from_number, "Thank You! Your message was accepted. your Id is " + @message.ClientId.to_s)
+        end
      else
         send_reply(from_number, "Problem accured, please try again later.")
      end
