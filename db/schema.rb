@@ -11,12 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140209005139) do
+ActiveRecord::Schema.define(version: 20140209040255) do
 
   create_table "messages", force: true do |t|
-    t.string   "message"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "State"
+    t.string   "Country"
+    t.string   "City"
+    t.string   "PhoneNumber"
+    t.string   "Zip"
+    t.integer  "ClientId"
+    t.string   "Body"
   end
+
+  add_index "messages", ["ClientId"], name: "index_messages_on_ClientId"
+  add_index "messages", ["Country"], name: "index_messages_on_Country"
+  add_index "messages", ["PhoneNumber"], name: "index_messages_on_PhoneNumber"
+  add_index "messages", ["State"], name: "index_messages_on_State"
+  add_index "messages", ["Zip"], name: "index_messages_on_Zip"
 
 end

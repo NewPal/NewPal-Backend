@@ -1,7 +1,13 @@
-<h1>Messages#index</h1>
 
-<p>All messages here</p>
+
+<p>All messages</p>
 
 <% @messages.each do |t| %>
-  <li> <%= t.message %> </li>
+  <li>ClientId:		 <%= t.ClientId %> </li>
+  <li>Number: 		 <%= t.Number %> </li>
+  <li>MessageBody:   <%= t.Body %> </li>
+  <li>State: 		 <%= t.State %> </li>
+  <li>Country 		 <%= t.Country %> </li>
+  
+     
 <% end %>

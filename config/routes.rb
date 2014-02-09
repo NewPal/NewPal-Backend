@@ -4,7 +4,8 @@ FriendApp::Application.routes.draw do
   get "messages/index"
   get "send_text/index"
   get "send_text/send_text_message"
-  get "receive_text/index"
+
+  post "receive_text/index"
   
   
 
