@@ -1,6 +1,13 @@
 FriendApp::Application.routes.draw do
 
- 
+
+# Front-end routes
+
+
+
+
+ # Back-end Routes
+
   get "messages/index"
  
   match 'messages/bodies',  to: 'messages#bodies',         via: 'get'

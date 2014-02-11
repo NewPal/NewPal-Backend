@@ -7,19 +7,39 @@ class MessagesController < ApplicationController
   def index
     if (params.length > 3)
       logger.info ("first: " + params.to_s)
+
     	state       = params[:state]
       phoneNumber = params[:phone]
+      country     = params[:country]
+      city        = params[:city]
+      zip         = params[:zip]
+
+
+
 
       messages = [] 
-       
-
-    	if state
+      
+      if state
     		messages = messages + Message.where(State: state).to_a
     	end
 
       if phoneNumber
-        messages << Message.where(State: state).to_a
+        messages = messages + Message.where(PhoneNumber: "+" + phoneNumber[/\d+/]).to_a
       end
+
+      if country
+        messages = messages + Message.where(Country: country).to_a
+      end
+
+      if city
+        messages = messages + Message.where(City: city).to_a
+      end
+
+      if zip
+        messages = messages + Message.where(Zip: zip).to_a
+      end
+
+
 
     else #No Json Params
        logger.info ("second: " + params.to_s)
