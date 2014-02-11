@@ -39,9 +39,9 @@ class ReceiveTextController < ApplicationController
 
      if @message.save
         if lastMessage
-          send_reply(from_number, "Thank You! Your message was accepted")
+          send_reply(from_number, "Thank you for contacting SafePal. Please continue to send us messages.")
         else  
-          send_reply(from_number, "Thank You! Your message was accepted. your Id is " + @message.ClientId.to_s)
+          send_reply(from_number, "Thank you for contacting SafePal. Your Id is " + @message.ClientId.to_s + ". Please continue to send us messages.")
         end
      else
         send_reply(from_number, "Problem accured, please try again later.")
