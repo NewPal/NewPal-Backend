@@ -29,5 +29,7 @@ optional - state, country, city, phoneNumber, ZipCode
 
 ##### Examples
 /messages/index.json?state=CA
+
 /messages/index.json?phone=13478190642
+
 /messages/index.json?phone=13478190642&state=NY
