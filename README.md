@@ -27,6 +27,7 @@ The service exposes a RESTful API (Using Json), Allowing client to query for all
 ####Parameters
 optional - state, country, city, phoneNumber, ZipCode
 
-##### Example
+##### Examples
 /messages/index.json?state=CA
-
+/messages/index.json?phone=13478190642
+/messages/index.json?phone=13478190642&state=NY
