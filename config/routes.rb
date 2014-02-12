@@ -1,7 +1,15 @@
 FriendApp::Application.routes.draw do
 
 
+
 # Front-end routes
+  root 'web_pages#home'
+  get "web_pages/home"
+  get "web_pages/about"
+
+  get "web_pages/data"
+
+
 
 
 
